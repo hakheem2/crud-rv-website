@@ -1,0 +1,37 @@
+{% load static %}
+<header id="header">
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="navbar-brand"><img src="{% static 'images/brand-logo.png' %}" class="im g-fluid" alt="website brand logo"></a>
+
+        <div class="navbar-menu" id="navbar_menu">
+            <a href="{% url 'home' %}" class="navbar-brand d-lg-none"><img src="{% static 'images/brand-logo.png' %}" alt="website brand logo"></a>
+            <ul class="nav-list d-lg-flex">
+               <li class="list-item"><a href="{% url 'home' %}" class="list-link" id="">Home</a></li>
+               <li class="list-item" id="toggleMenu">
+                    <div class="d-flex align-items-center">
+                        <a href="{% url 'shop' %}" class="list-link">Used RVs</a>
+                        <span class="material-symbols-outlined drop_down_arrow d-lg-none">arrow_drop_down</span>
+                    </div>
+                    <ul class="drop-list" id="drop_menu">
+                        <li class="drop-item"><a href="{% url 'shop' %}" class="drop-link">Sales Inventory USA</a></li>
+                        <li class="drop-item"><a href="{% url 'shop' %}" class="drop-link">Sales Inventory Canada</a></li>
+                        <li class="drop-item"><a href="{% url 'sales_rebates' %}" class="drop-link">Sales Rebates</a></li>
+                    </ul>
+               </li>
+               <li class="list-item"><a href="{% url 'blog' %}" class="list-link">Trip Inspirations</a></li>
+               <li class="list-item"><a href="{% url 'about' %}" class="list-link">About Us</a></li>
+               <li class="list-item"><a href="{% url 'terms' %}" class="list-link">Contract Terms</a></li>
+               <li class="list-item"><a href="{% url 'faqs' %}" class="list-link">Faqs</a></li>
+            </ul>
+            <button class="btn d-lg-none" id="nav_close"><span class="material-symbols-outlined">close</span></button>
+        </div>
+        
+        <div class="navbar-btn d-flex justify-content-end">
+            <a href="tel:" class="btn me-1"><span class="material-symbols-outlined call-icon">call</span> <span class="number d-none d-lg-flex">: +1 302 4445555</span></a>
+            <button class="btn d-lg-none" id="nav_open"><span class="material-symbols-outlined menu-icon">menu</span></button>
+        </div>
+    </nav>
+</header>
+
+
+

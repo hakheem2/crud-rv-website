@@ -1,0 +1,590 @@
+
+.body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#banner{
+    position: relative;
+
+    .overlay-image img{
+        width: 100vw;
+        height: 60vh;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .row{
+        height: 60vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: var(--white-color);
+        font-family: "Jua", sans-serif;
+    }
+    .brand-name .brand-sup{
+        font-size: 3rem;
+    }
+    .brand-name .brand-sub{
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+    .brand-info{
+        font-family: "Inter";
+        color: var(--white-color);
+    }
+    .btn{
+        color: var(--white-color);
+        background-color: var(--theme-color-2);
+        padding: 15px 40px;
+        border-radius: 15px;
+    }
+}
+
+
+
+#about-sec{
+    height: fit-content;
+    background: url('../images/paper-texture.png') repeat;
+    background-size: auto; /* keeps natural texture */
+    background-color: #fff;
+    padding:0 15px 100px;
+
+    .icon-card{
+        padding-bottom: 10px;
+        margin: 0 auto;
+    }
+    
+    .icon-card .wrapper{
+        background-color: var(--theme-color-4);
+        border-radius: 20px;
+        padding: 30px 10px;
+        text-align: center;
+        margin: 0;
+        height: 100%;
+
+    }
+    .icon-card .head{
+        color: var(--theme-color-2);
+        font-family: var(--head);
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+    .icon-card .text{
+        color: var(--text-color);
+        font-size: 1rem;
+        font-family: var(--inter);
+        padding: 0;
+    }
+    .icon-card .material-symbols-outlined{
+        font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+        color: var(--theme-color-2);
+        font-size: 3.8rem;
+        width: 100%;
+    }
+
+
+    #about-us-content{
+
+        .content-col img{
+            width: 100%;
+            height: 40vh;
+            border-radius: 40px;
+            object-fit: cover;
+            object-position: center;
+        }
+        .content-col .head{
+            color: var(--theme-color-2);
+            font-family: var(--head);
+            font-size: 1.6rem;
+            font-weight: 600;
+            padding: 20px 0;
+        }
+        .content-col .text{
+            color: var(--text-color);
+            font-size: 1rem;
+            font-family: var(--inter);
+            padding: 0;
+        }
+    }
+
+
+    .sec-link-btn{
+        display: block;
+        text-align: center;
+    }
+    .sec-link-btn .btn{
+        margin-top: 20px;
+        padding: 2px 5px;
+        text-align: center;
+        border-bottom: 1px solid var(--text-color);
+        font-family: var(--inter);
+        border-radius: 0;
+        &:hover{
+            color: var(--theme-color-2);
+            border-color: var(--theme-color-2);
+        }
+    }
+}
+
+
+
+#top-specials{
+    background-color: var(--theme-color-4);
+    padding: 50px 15px 40px;
+
+    .sec-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 0 15px 20px;
+    }.sec-header .head{
+        font-family: var(--head);
+        font-size: 1.2rem;
+    }.sec-header .btn{
+        padding: 10px 20px;
+        border-radius: 15px;
+        background-color: var(--white-color);
+        border: 2px solid var(--white-color);
+
+        &:hover{
+            background-color: var(--theme-color-4);
+        }
+    }
+}
+
+
+
+#section-4{
+    background-image: url('../images/map-bg.png');
+    background-repeat: repeat;
+    border-radius: 20px !important;
+    
+    .sec-header{
+        padding: 0 20px;
+    }.sec-header .wrapper{
+        width: 100%;
+        height: 100%;
+        padding: 30px 20px 10px;
+        border-radius: 20px;
+        background-color: var(--theme-color-2);
+        color: var(--white-color);
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }.sec-header .head{
+        font-family: var(--head);
+        font-size: 1.5rem;
+        padding: 15px 20px;
+    }.sec-header img{
+        width: 80%;
+        margin: 0 auto;
+        object-fit: cover;
+        object-position: center;
+    }.sec-header .text{
+        padding: 0;
+        font-size: 1rem;
+        color: var(--white-color);
+    }
+
+    .btn{
+        background-color: var(--theme-color-3);
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--inter);
+        color: var(--theme-color-1);
+        font-weight: 600;
+        font-size: 1.1rem;
+
+        &:focus{
+            opacity: 0.8;
+        }
+
+    }.btn .material-symbols-outlined{
+        font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+        padding-right: 10px;
+    }
+
+
+    .rebate-deals{
+        padding: 0 25px !important;
+    }.rebate-deals .col{
+        padding: 20px 5px 0;
+    }.rebate-deals .deal-card{
+        width: 100%;
+        height: 50vh;
+        padding: 40px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 20px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        object-fit: cover;
+        object-position: center;
+
+        &:hover{
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    }.rebate-deals .fly-buy .deal-card{
+        background-image: url('../images/fly-rv.jpeg');
+    }.rebate-deals .test-buy .deal-card{
+        background-image: url('../images/frdu-hero.jpg');
+    }.rebate-deals .ship-buy .deal-card{
+        background-image: url('../images/ship-rv.jpeg');
+    }.rebate-deals .deal-card .bg-overlay{
+        background-color: rgba(52, 91, 6, 0.7);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 20px;
+    }.deal-card .wrapper{
+        text-align: center;
+        z-index: 899;
+        color: var(--theme-color-4);
+    }.deal-card .head{
+        font-family: var(--head);
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }.deal-card .text{
+        font-size: 1rem;
+    }.deal-card .sec-link-btn{
+        margin-top: 20px;
+        padding: 0 2px;
+        text-align: center;
+        font-family: var(--inter);
+        border-bottom: 1px solid var(--theme-color-4);
+        border-radius: 0;
+        &:hover{
+           border-color: var(--theme-color-4);
+        }
+    }
+}
+
+
+
+#section-5{
+    background-image: url('../images/img-desert.jpg');
+    object-fit: cover;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .bg-overlay{
+        position: relative;
+        top: -1px;
+        height: fit-content;
+        width: 100%;
+        background: linear-gradient(to bottom, var(--theme-color-4) 0%, rgb(244, 247, 250, 0.2) 20%, var(--theme-color-4) 60%, var(--theme-color-4) 100%);
+        padding: 100px 0 40px;
+    }
+
+    .sec-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 0 10px 20px;
+    }.sec-header .head{
+        font-family: var(--head) !important;
+        font-size: 1.2rem;
+    }.sec-header .btn{
+        padding: 10px 20px;
+        border-radius: 15px;
+        background-color: var(--white-color);
+        border: 2px solid var(--white-color);
+
+        &:hover{
+            background-color: var(--theme-color-4);
+        }
+    }
+
+
+    #rvImageCarousel{
+        padding-bottom: 40px;
+        margin-bottom: 70px;
+    }.carousel-item{
+        position: relative;
+        height: 45vh;
+    }.carousel-item img.inside-view{
+        width: 90%;
+        margin: 0 auto;
+        height: 30vh;
+        border-radius: 20px;
+        
+    }.carousel-item img.top-view{
+        width: 60%;
+        height: 15vh;
+        position: relative;
+        bottom: -8%;
+        right: -10px;
+        float: right;
+        z-index: 899;
+    }
+
+}
+
+
+
+#section-6{
+    padding: 50px 15px;
+	background-image: url('../images/paper-texture.png');
+	background-size: contain;
+	position: relative;
+	top: -1px;
+
+	.sec-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 0 10px 20px;
+    }.sec-header .head{
+        display: flex;
+        align-items: baseline;
+        position: relative;
+    }.head .head-text{
+        font-family: var(--head);
+        font-size: 1.2rem;
+        position: relative;
+        left: 40px;
+    }.head img{
+        width: 35px;
+        margin-right: 5px;
+        height: auto;
+        position: absolute;
+        bottom: 3px;
+    }.sec-header .btn{
+        padding: 10px 20px;
+        border-radius: 15px;
+        background-color: var(--white-color);
+        border: 2px solid var(--white-color);
+
+        &:hover{
+            background-color: var(--theme-color-4);
+        }
+    }
+
+    .post-card{
+        border-radius: 15px;
+        padding-bottom: 10px;
+    }.post-card .wrapper{
+        width: 100%;
+        border-radius: 15px;
+        background-color: var(--theme-color-4);
+    }.post-card .post-image{
+        width: 100%;
+    }.post-card .post-image img{
+        width: 100%;
+        height: 25vh;
+        padding: 4px;
+        border-radius: 15px;
+    }.post-card .post-info{
+        padding: 10px;
+    }.post-card .post-info .post-title{
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--text-color);
+        padding: 10px 0;
+    }.post-card .post-info .info-wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+    }.post-card .post-info .post-date{
+        font-size: 0.8;
+        color: var(--light-text-color);
+    }.post-card .post-info .post-link{
+        font-size: 0.95;
+        color: var(--text-color);
+        text-decoration: underline;
+
+        &:hover{
+            color: var(--theme-color-2);
+        }
+    }
+
+}
+
+
+
+#section-7{
+    padding: 50px 15px;
+    background-image: url('../images/map-bg.png');
+    background-repeat: repeat;
+
+    .sec-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 0 10px 20px;
+    }.sec-header .head{
+        display: flex;
+        align-items: baseline;
+        position: relative;
+        margin-bottom: 20px;
+    }.head .head-text{
+        font-family: var(--head);
+        font-size: 1.3rem;
+        position: relative;
+        left: 40px;
+    }.head img{
+        width: 35px;
+        margin-right: 5px;
+        height: auto;
+        position: absolute;
+        bottom: 3px;
+    }.sec-header .btn{
+        padding: 10px 20px;
+        border-radius: 15px;
+        background-color: var(--white-color);
+        border: 2px solid var(--white-color);
+
+        &:hover{
+            background-color: var(--theme-color-4);
+        }
+    }
+
+    #img-gallery div{
+       padding: 0 !important;
+       margin: 0 !important; 
+       position: relative;
+    }#img-gallery .gallery-img{
+        padding: 5px;
+        width: 100%;
+        height: 20vh;
+        border-radius: 20px;
+        transition: all 0.3s ease-in-out;
+    }#img-gallery .fa-brands{
+        font-size: 1.2rem;
+        color: var(--white-color);
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+
+
+/* ======== MEDIA QUERY STYLING */
+@media (min-width:1024px){
+    #banner{
+        .overlay-image img{
+            height: 80vh;
+        }
+        .row{
+            height: 80vh;
+            padding-left: 90px !important;
+        }
+        .brand-name .brand-sup{
+            font-size: 5rem;
+        }
+        .brand-name .brand-sub{
+            font-size: 2.5rem;
+        }
+    }
+
+
+
+    #about-sec{
+        padding: 40px 150px 100px;
+
+        #about-us-content{
+            padding-top: 100px !important;
+        }#about-us-content .content-col img{
+            width: 100%;
+            height: 60vh;
+            border-radius: 150px 40px 120px 50px;
+        }#about-us-content .content-col .head{
+            font-size: 2.3rem;
+            padding: 20px 0 0;
+        }
+    }
+
+
+
+    #top-specials{
+        padding: 100px 150px;
+    }
+
+
+
+    #section-4{
+        padding: 100px 150px;
+
+        .rebate-deals .col{
+            padding: 0 5px 10px;
+            height: fit-content;
+            overflow: hidden;
+        }.rebate-deals .deal-card{
+            padding: 100px 40px;
+            height: fit-content;
+        }
+    }
+
+
+
+    #section-5{
+
+        .bg-overlay{
+            padding: 100px 150px;
+        }
+        
+        #rvImageCarousel{
+            padding-bottom: 40px;
+            margin-bottom: 70px;
+        }.carousel-item{
+            position: relative;
+            height: 60vh;
+        }.carousel-item img.inside-view{
+            height: 40vh;
+            width: 62%;
+            margin: 0;
+            margin-left: 20px;
+            border-radius: 20px;
+            
+        }.carousel-item img.top-view{
+            height: 20vh;
+            width: 40%;
+            bottom: -15%;
+            right: 10%;
+        }
+		
+	}
+
+
+
+    #section-6{
+        padding: 100px 150px;
+
+        .post-card{
+            padding: 0;
+            padding-right: 20px;
+        }
+    }
+
+
+
+    #section-7{
+        padding: 50px 150px 100px;
+
+
+        #img-gallery .gallery-img{
+            height: 30vh;
+        }
+    }
+
+}
+
+
+
+
+

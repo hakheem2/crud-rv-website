@@ -1,0 +1,1 @@
+web: python manage.py migrate && python create_superuser.py && gunicorn franklin_used_rv.wsgi:application --bind 0.0.0.0:$PORT
