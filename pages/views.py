@@ -18,9 +18,6 @@ def home(request):
     }
     return render(request, 'index.html', context)
 
-def where(request):
-    return render(request, 'where.html')
-
 def faqs(request):
     return render(request, 'faqs.html')
 

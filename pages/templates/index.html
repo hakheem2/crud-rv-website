@@ -109,26 +109,28 @@
 						{% for product in specials %}
 						<div class="swiper-slide">
 							<a href="{% url 'product' slug=product.slug stock_no=product.stock_no %}" class="product-card">
-									<div class="product-image">
-										<img src="{{ product.image.url }}" alt="{{ product.name }}">
-										<button id="wishlist-btn" data-bs-target="{{ product.id }}"><span class="material-symbols-outlined">favorite</span></button>
+								<div class="product-image">
+									<img src="{{ product.image.url }}" alt="{{ product.name }}">
+									<button class="wishlist-btn" data-product-id="{{ product.id }}">
+										<span class="material-symbols-outlined">favorite</span>
+									</button>
+								</div>
+								<div class="product-name">
+									<h3 class="name">{{ product.name }}</h3><span class="year">{{ product.year }}</span>
+								</div>
+								<div class="product-price">
+									<div class="starter-price">
+										<span class="sub-text">Starts from</span><h4 class="starter" id="starter">USD 3,000/month</h4>
 									</div>
-									<div class="product-name">
-										<h3 class="name">{{ product.name }}</h3><span class="year">{{ product.year }}</span>
+									<div class="full-price">
+										<span class="sub-text">Full Price</span><h4 class="price" id="discounted">USD {{ product.sale_price|intcomma }}</h4>
+										<span class="full" id="full">USD {{ product.price|intcomma }}</span>
 									</div>
-									<div class="product-price">
-										<div class="starter-price">
-											<span class="sub-text">Starts from</span><h4 class="starter" id="starter">USD 3,000/month</h4>
-										</div>
-										<div class="full-price">
-											<span class="sub-text">Full Price</span><h4 class="price" id="discounted">USD {{ product.sale_price|intcomma }}</h4>
-											<span class="full" id="full">USD {{ product.price|intcomma }}</span>
-										</div>
-									</div>
-									<hr class="custom-hr">
-									<div class="mileage-info">
-											<span class="sub-text">Mileage</span><h4 class="mileage">{{ product.mileage|intcomma }}</h4>
-									</div>
+								</div>
+								<hr class="custom-hr">
+								<div class="mileage-info">
+										<span class="sub-text">Mileage</span><h4 class="mileage">{{ product.mileage|intcomma }}</h4>
+								</div>
 							</a>
 						</div>
 						{% endfor %}
@@ -243,26 +245,28 @@
 										{% for product in latest %}
 										<div class="swiper-slide">
 											<a href="{% url 'product' slug=product.slug stock_no=product.stock_no %}" class="product-card">
-													<div class="product-image">
-														<img src="{{ product.image.url }}" alt="{{ product.name }}">
-														<button id="wishlist-btn" data-bs-target="{{ product.id }}"><span class="material-symbols-outlined">favorite</span></button>
+												<div class="product-image">
+													<img src="{{ product.image.url }}" alt="{{ product.name }}">
+													<button class="wishlist-btn" data-product-id="{{ product.id }}">
+														<span class="material-symbols-outlined">favorite</span>
+													</button>
+												</div>
+												<div class="product-name">
+													<h3 class="name">{{ product.name }}</h3><span class="year">{{ product.year }}</span>
+												</div>
+												<div class="product-price">
+													<div class="starter-price">
+														<span class="sub-text">Starts from</span><h4 class="starter" id="starter">USD 3,000/month</h4>
 													</div>
-													<div class="product-name">
-														<h3 class="name">{{ product.name }}</h3><span class="year">{{ product.year }}</span>
+													<div class="full-price">
+														<span class="sub-text">Full Price</span><h4 class="price" id="discounted">USD {{ product.sale_price|intcomma }}</h4>
+														<span class="full" id="full">USD {{ product.price|intcomma }}</span>
 													</div>
-													<div class="product-price">
-														<div class="starter-price">
-															<span class="sub-text">Starts from</span><h4 class="starter" id="starter">USD 3,000/month</h4>
-														</div>
-														<div class="full-price">
-															<span class="sub-text">Full Price</span><h4 class="price" id="discounted">USD {{ product.sale_price|intcomma }}</h4>
-															<span class="full" id="full">USD {{ product.price|intcomma }}</span>
-														</div>
-													</div>
-													<hr class="custom-hr">
-													<div class="mileage-info">
-															<span class="sub-text">Mileage</span><h4 class="mileage">{{ product.mileage|intcomma }}</h4>
-													</div>
+												</div>
+												<hr class="custom-hr">
+												<div class="mileage-info">
+														<span class="sub-text">Mileage</span><h4 class="mileage">{{ product.mileage|intcomma }}</h4>
+												</div>
 											</a>
 										</div>
 										{% endfor %}

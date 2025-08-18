@@ -380,7 +380,7 @@ textarea {
     }
 
 
-    #wishlist-btn{
+    .wishlist-btn{
         position: absolute;
         top: 10px;
         right: 10px;
@@ -391,7 +391,8 @@ textarea {
         display: flex;
         align-items: center;
         justify-content: center;
-    }#wishlist-btn .material-symbols-outlined{
+		z-index: 750;
+    }.wishlist-btn .material-symbols-outlined{
         margin: 0 !important;
         font-size: 1.7rem;
         padding: 0 !important;
