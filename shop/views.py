@@ -94,3 +94,49 @@ def ajax_filter_products(request):
 
     # Return partial template for AJAX
     return render(request, 'partials/product_list.html', {'products': products})
+
+
+def ajax_filter_sort_products(request):
+    # Get filter params
+    model = request.GET.get('model', 'all_models')
+    year = request.GET.get('year', 'all_years')
+    location = request.GET.get('location', 'all_locations')
+    price = request.GET.get('price', None)
+    sort_key = request.GET.get('sort', 'all')
+
+    # Start with all products
+    products = Product.objects.all()
+
+    # Apply filters
+    if model != 'all_models':
+        products = products.filter(name=model)
+
+    if year != 'all_years':
+        products = products.filter(year=year)
+
+    if location != 'all_locations':
+        products = products.filter(location=location)
+
+    if price:
+        try:
+            price = float(price)
+            products = products.filter(sale_price__lte=price)
+        except ValueError:
+            pass
+
+    # Apply sorting
+    if sort_key == 'recent':
+        products = products.order_by('-created_at')
+    elif sort_key == 'model':
+        products = products.order_by('-year')
+    elif sort_key == 'lowest_price':
+        products = products.order_by('sale_price')
+    elif sort_key == 'highest_price':
+        products = products.order_by('-sale_price')
+    elif sort_key == 'mileage':
+        products = products.order_by('mileage')
+    elif sort_key == 'all':
+        all_products = list(products)
+        products = random.sample(all_products, min(len(all_products), 8))
+
+    return render(request, 'partials/product_list.html', {'products': products})

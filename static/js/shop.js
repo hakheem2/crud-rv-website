@@ -23,7 +23,7 @@ $(document).ready(function () {
         $("#product-loading").show();
 
         $.ajax({
-            url: "/buy-used-rv/ajax/filter-products/",
+            url: "/buy-used-rv/ajax/filter-sort-products/",
             type: "GET",
             data: data,
             cache: false,

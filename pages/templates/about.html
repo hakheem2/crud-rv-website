@@ -1,15 +1,189 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load humanize %}
 {% block head %}
 	<!-- ========== Swipper Slide CSS Link ========= -->
 	<!-- ======= Custom CSS Styling -->
-   <link rel="stylesheet" href="{% static 'css/home.css' %}">
+   <link rel="stylesheet" href="{% static 'css/about.css' %}">
+   <title>About Franklin USed RVs</title>
 {% endblock %}
 
 {% block body %} 
    {% include 'navbar.html' %}
+   <section id="sec1">
+      <div class="container-fluid p-0 m-0 d-lg-flex align-items-center">
+         <div class="bg-overlay d-none d-lg-block"></div>
+         <div class="content">
+            <div class="wrapper">
+               <h1 class="title"> About Franklin Used RVs</h1>
+               <p class="text">Franklin is one of the largest RV Rental firm in the United States, with 132+ locations in the U.S. and Canada.</p>
+               <a href="{% url 'shop' %}" class="btn link">Used RVs</a>
+            </div>
+         </div>
+      </div>
+   </section>
+   <main class="body">
+      <section id="about-sec">
+         <div class="container-fluid p-0 m-0">
+            <div class="row p-0 m-0">
+               <div class="col-12 col-md-10 col-lg-6 order-lg-2 pt-lg-5">
+                  <div class="wrapper">
+                     <h2 class="title">50 Years and Counting</h2>
+                     <p class="text">As a privately held, employee-owned company, Franklin Used RVs dedicated and experienced team has been creating RV vacation memories for families from across the globe for more than 50 years. <br><br>
+                     Whether you're an RV veteran or planning an RV vacation for the first time, we can help. Ready to get started?</p>
+                     <a href="{% url 'blog' %}" class="btn">Get Inspired</a>
+                  </div>
+               </div>
+               <div class="col-12 col-md-10 col-lg-6 order-lg-1">
+                  <div class="img-wrapper">
+                     <img src="{% static 'images/about-image2.jpg' %}" alt="Franklin Used RVs">
+                  </div>
+               </div>
+               <div class="col-12 col-md-12 order-lg-3 d-lg-flex align-items-bottom">
+                  <div class="wrapper">
+                     <h2 class="title">Peace of Mind</h2>
+                     <p class="text">The stress-free convenience of vacationing with your room on your back allows families and friends to travel comfortably and in style while allowing time for a great opportunity to grow closer as you travel to and from your destination. With Franklin Used RVs, the journey is a rich part of the reward. <br><br>
+                     At Franklin Used RVs, you can rent various sizes of Cruise America class C motorhomes to discover what best suits your needs or likes. Once you have decided, you can keep renting them. If you're looking for a used RV for sale, you can purchase one of our well-maintained, pre-loved RVs at a substantially lower price than other used RV dealers.</p>
+                     <a href="{% url 'blog' %}" class="btn">Get Inspired</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
 
+      <section id="contact-sec">
+         <div class="container-fluid p-0 m-0">
+            <div class="row p-0 m-0 d-flex justify-content-between">
+               <div class="col-12 col-md-10 col-lg-4 p-0 m-0">
+                  <div class="contact-card shadow-sm">
+                     <!-- Contact Information -->
+                     <div class="top-section">
+                           <h2 class="main-title ps-lg-3">Franklin Used RVs.</h2>
+                           <div class="contact-info ps-lg-3">
+                              <h3 class="title">Inventory Headquarters</h3>
+                              <a href="tel:tel:+13233754195" class="icon phone-icon">
+                                 <span class="material-symbols-outlined">call</span>+1(323) 375 4195
+                              </a> <br>
+                              <a href="mailto:support@carolineheusssiliconedolls.com" class="icon email-icon">
+                                 <span class="material-symbols-outlined">mail</span>support@carolineheuss.com
+                              </a> <br>
+                              <a href="maps.google.com" class="icon address-icon">
+                                 7147 Churchland St Pittsburgh,  <br> PA 15206, USA.
+                              </a>
+                           </div>
+                     </div>
+                     <!-- Opening Hours -->
+                     <div class="buttom-section pt-3 ps-lg-3">
+                           <div class="content">
+                              <h3 class="title">Opening Hours</h3>
+                              <p class="text ">
+                                 Monday : 5.60 AM - 5.00 PM
+                              </p>
+                              <p class="text ">
+                                 Tuesday : 5.60 AM - 5.00 PM
+                              </p>
+                              <p class="text ">
+                                 Wednesday : 5.60 AM - 5.00 PM
+                              </p>
+                              <p class="text ">
+                                 Thursday : 5.60 AM - 5.00 PM
+                              </p>
+                              <p class="text ">
+                                 Fridays : 5.60 AM - 5.00 PM
+                              </p>
+                              <p class="text ">
+                                 Saturday : 10.00 AM - 4.00 PM
+                              </p>
+                           </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-12 col-lg-6 p-0 m-0">
+                  <div class="form-wrapper">
+                     <div class="head">
+                        <h2 class="title">Have a question, We'd love to help you!</h2>
+                        <p class="text">We're never too busy, but this is the best way for us to assist you as quickly as possible.</p>
+                     </div>
+                     <form class="form" action="">
+                        <div class="mb-3 input-group">
+                              <div class="field-wrapper mb-3">
+                                 <label for="name" class="form-label">Full Name<span class="material-symbols-outlined required-icon">star_rate</span></label>
+                                 <input type="text" class="input-field form-control" id="name" placeholder="" required>
+                              </div>
+                        </div>
+
+                        <div class="mb-3 input-group">
+                              <div class="field-wrapper mb-3">
+                                 <label for="email" class="form-label">Email Address<span class="material-symbols-outlined required-icon">star_rate</span></label>
+                                 <input type="email" class="input-field form-control" id="email" placeholder="" required>
+                              </div>
+                              <div class="field-wrapper">
+                                 <label for="phone" class="form-label">Phone Number<span class="material-symbols-outlined required-icon">star_rate</span></label>
+                                 <input type="number" class="input-field form-control" id="phone" placeholder="" required>
+                              </div>
+                        </div>
+
+                        <div class="mb-3">
+                              <label for="message" class="form-label">Message<span class="material-symbols-outlined required-icon">star_rate</span></label>
+                              <textarea class="form-control" id="message" rows="4" placeholder="Type your message" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn form-control" id="submit-request-form">Submit</button>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <section id="section-4">
+			<div class="container-fluid">
+					<div class="row">
+						<div class="sec-header col col-12 col-md-10 col-lg-4">
+							<div class="wrapper">
+									<h2 class="head">Need Help Choosing the Right Used RV?</h2>
+									<p class="text">Are you not quite ready to purchase? With Franklin Used RV, if you’re not sure where to start, our friendly team is here to guide you — from choosing the right RV to understanding financing and delivery options.</p>
+									<img src="{% static 'images/person-question.png' %}" alt="">
+									<a href="tel:" class="btn"><span class="material-symbols-outlined">call</span>+123456789</a>
+							</div>
+						</div>
+						<div class="rebate-deals col col-12 col-md-10 col-lg-8">
+							<div class="row">
+										<div class="col fly-buy col-12 col-md-6">
+										<div class="deal-card">
+											<div class="bg-overlay"></div>
+											<div class="wrapper">
+													<h2 class="head">Fly & Buy Rebate</h2>
+													<p class="text">Travel from Anywhere, Save on Your RV Purchase when using Franklin Used RVs</p>
+													<a href="{% url 'sales_rebates' %}" class="sec-link-btn">Learn More</a>
+											</div>
+										</div>
+									</div>
+									<div class="col test-buy col-12 col-md-6">
+										<div class="deal-card">
+											<div class="bg-overlay"></div>
+											<div class="wrapper">
+													<h2 class="head">Test Drive & Buy Rebate</h2>
+													<p class="text">Not sure if an RV fits your lifestyle?, Try Before You Commit</p>
+													<a href="{% url 'sales_rebates' %}" class="sec-link-btn">Learn More</a>
+											</div>
+										</div>
+									</div>
+									<div class="col ship-buy col-12">
+										<div class="deal-card">
+											<div class="bg-overlay"></div>
+											<div class="wrapper">
+													<h2 class="head">Ship & Save Rebate</h2>
+													<p class="text">Save on Delivery When You Buy from Franklin Used RVs Remotely from Any Location</p>
+													<a href="{% url 'sales_rebates' %}" class="sec-link-btn">Learn More</a>
+											</div>
+										</div>
+									</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		</section>
+   </main>
 {% endblock %}
 
 {% block footer %}

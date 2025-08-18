@@ -1,11 +1,4 @@
 $(document).ready( () => {
-   
-   //OPENING AND CLOSING OF NAVBAR DROPDOWNS
-    $('.drop_down_arrow').click(function() {
-        $('#drop_menu').fadeToggle(200); // Smooth transition
-    });
-
-
     // Array of images
     var images = [
         '/static/images/gallery-img-1.jpeg',

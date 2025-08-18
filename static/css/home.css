@@ -10,13 +10,13 @@
 
     .overlay-image img{
         width: 100vw;
-        height: 60vh;
+        height: 75vh;
         object-fit: cover;
         object-position: center;
     }
 
     .row{
-        height: 60vh;
+        height: 75vh;
         position: absolute;
         top: 0;
         left: 0;
@@ -250,7 +250,7 @@
         border-radius: 20px;
     }.deal-card .wrapper{
         text-align: center;
-        z-index: 899;
+        z-index: 799;
         color: var(--theme-color-4);
     }.deal-card .head{
         font-family: var(--head);
@@ -478,10 +478,10 @@
 @media (min-width:1024px){
     #banner{
         .overlay-image img{
-            height: 80vh;
+            height: calc(100vh - 110px);
         }
         .row{
-            height: 80vh;
+            height: calc(100vh - 110px);
             padding-left: 90px !important;
         }
         .brand-name .brand-sup{

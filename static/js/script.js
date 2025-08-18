@@ -24,7 +24,16 @@ $(document).ready(function () {
             $(this).attr('id', 'active')
         }
     });
+
+
+
+    //opening and closing nav menu
+    //OPENING AND CLOSING OF NAVBAR DROPDOWNS
+    $('.drop_down_arrow').click(function() {
+        $('#drop_menu').fadeToggle(200); // Smooth transition
+    });
 });
+
 
 
 //contrling how google icons appear when page loaded

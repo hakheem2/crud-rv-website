@@ -9,8 +9,8 @@
 
 .page-location{
    padding: 20px;
-   a, h1{
-      font-size: 0.9rem;
+   a, .page-seo-name{
+      font-size: 0.9rem !important;
       color: var(--muted);
       line-height: 1rem;
       font-weight: 400;
