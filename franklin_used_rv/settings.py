@@ -131,9 +131,8 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.getenv("STATIC_ROOT", BASE_DIR / "staticfiles")
 STATICFILES_DIRS = [BASE_DIR / 'static']  # for local development
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.getenv("MEDIA_ROOT", BASE_DIR / "media")
-
+MEDIA_URL = os.getenv("MEDIA_URL", "/media/")  # default fallback
+MEDIA_ROOT = os.getenv("MEDIA_ROOT", os.path.join(BASE_DIR, "media"))  # default local folder
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
