@@ -82,7 +82,9 @@ WSGI_APPLICATION = 'franklin_used_rv.wsgi.application'
 
 DATABASES = {
     "default": dj_database_url.parse(
-        os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR / 'db.sqlite3'}")
+        os.environ.get("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True
     )
 }
 # DATABASES = {
