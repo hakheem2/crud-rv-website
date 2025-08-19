@@ -2,7 +2,21 @@
 {% load static %}
 {% load humanize %}
 {% block head %}
-	<!-- ========== Swipper Slide CSS Link ========= -->
+        
+    <title>{{ product.name }} for Sale | Franklin Used RVs</title>
+    <meta name="description" content="Buy the {{product.name}}, a quality pre-owned RV available at Franklin Used RVs. Reliable, affordable, and ready for adventure." />
+    <link rel="canonical" href="{% url 'product' slug=product.slug stock_no=product.stock_no %}" />
+    
+    <meta property="og:title" content="{{ product.name }} for Sale | Franklin Used RVs" />
+    <meta property="og:description" content="Check out the {{product.name}} now available at Franklin Used RVs. Affordable and reliable for your travels." />
+    <meta property="og:image" content="{{ product.image.url }}" />
+    <meta property="og:url" content="{% url 'product' slug=product.slug stock_no=product.stock_no %}" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{product.name}} for Sale | Franklin Used RVs" />
+    <meta name="twitter:description" content="Discover the {{product.name}}, a quality used RV for sale at Franklin Used RVs." />
+    <meta name="twitter:image" content="{{ product.image.url }}" />
+
    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 	<!-- ======= Custom CSS Styling -->
    <link rel="stylesheet" href="{% static 'css/product.css' %}">
@@ -13,7 +27,8 @@
    <main class="body">
         <!-- Page Location Breadcrumb -->
         <div class="page-location d-flex"> 
-            <a href="{% url 'home' %}">Home&nbsp;&nbsp;>&nbsp;&nbsp;</a><a href="{% url 'shop' %}">Buy Used RV&nbsp;&nbsp;>&nbsp;&nbsp;</a><h6 class="page-seo-name fs-6" style="font-size: 0.9rem;">{{ product.name }}</h6>
+            <a href="{% url 'home' %}">Home&nbsp;&nbsp;>&nbsp;&nbsp;</a><a href="{% url 'shop' %}">Buy Used RV&nbsp;&nbsp;>&nbsp;&nbsp;</a><br>
+            <h1 class="page-seo-name" style="font-size: 0.9rem;">{{ product.name }}</h1>
         </div>
 
         <section id="product">
@@ -23,9 +38,9 @@
                     <div class=" col-12 col-lg-7 p-0" id="">
                         <div class="product-images">
                             <div class="main-image">
-                                <div id="wishlist-btn">
+                                <button class="wishlist-btn {% if product.id|stringformat:'s' in request.session.wishlist %}active{% endif %}" data-product-id="{{ product.id }}">
                                     <span class="material-symbols-outlined">favorite</span>
-                                </div>
+                                </button>
                                 <img class="img img-fluid" src="{{ product.image.url }}" alt="{{ product.name }} from frankline used rvs">
                             </div>
                             <div class="gallery-images">
@@ -67,9 +82,9 @@
                                 <h3 class="year">{{ product.year }}</h3>
                                 <div class="price-box">
                                     <h2 class="sales-price">USD&nbsp;<span id="sale_price">{{ product.sale_price|intcomma }}</span></h2>
-                                    <h3 class="price">
+                                    <h3 class="price text-end">
                                         <span class="discount-percent"></span>&nbsp;
-                                        <span class="original-price">USD<span id="price">{{ product.price|intcomma }}</span></span>
+                                        <span class="original-price">$<span id="price">{{ product.price|intcomma }}</span></span>
                                     </h3>
                                 </div>
                             </div>
@@ -322,4 +337,5 @@
 {% block footer %}
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script src="{% static 'js/product.js' %}"></script>
+    <script src="{% static 'js/wishlist.js' %}"></script>
 {% endblock %}

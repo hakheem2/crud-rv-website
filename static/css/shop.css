@@ -7,14 +7,16 @@
 }
 
 
-.page-location{
+.page-location {
    padding: 20px;
-   a, .page-seo-name{
-      font-size: 0.9rem !important;
-      color: var(--muted);
-      line-height: 1rem;
-      font-weight: 400;
-   }
+}
+
+.page-location a,
+.page-location h1 {
+   font-size: 0.9rem;
+   color: var(--muted);
+   line-height: 1rem;
+   font-weight: 400;
 }
 
 #section-1{

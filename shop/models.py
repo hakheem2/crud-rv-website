@@ -1,6 +1,10 @@
 from django.db import models
 from django.utils.text import slugify
 # Create your models here.
+COUNTRY_CHOICES = [
+    ("USA", "USA"),
+    ("Canada", "Canada"),
+]
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
@@ -15,6 +19,7 @@ class Product(models.Model):
     vin_number = models.CharField("VIN", max_length=100, unique=True)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    country = models.CharField(max_length=20, choices=COUNTRY_CHOICES, default="USA")
     image = models.ImageField(upload_to='uploads/main_images/')
 
 

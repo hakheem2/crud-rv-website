@@ -4,7 +4,7 @@
         <a href="{% url 'home' %}" class="navbar-brand"><img src="{% static 'images/brand-logo.png' %}" class="im g-fluid" alt="website brand logo"></a>
 
         <div class="navbar-menu" id="navbar_menu">
-            <a href="{% url 'home' %}" class="navbar-brand d-lg-none"><img src="{% static 'images/brand-logo.png' %}" alt="website brand logo"></a>
+            <a href="{% url 'home' %}" class="navbar-brand d-lg-none" id="navbar-brand"><img src="{% static 'images/brand-logo.png' %}" alt="website brand logo"></a>
             <ul class="nav-list d-lg-flex">
                <li class="list-item"><a href="{% url 'home' %}" class="list-link" id="">Home</a></li>
                <li class="list-item" id="toggleMenu">
@@ -13,8 +13,8 @@
                         <span class="material-symbols-outlined drop_down_arrow px-4 d-lg-none">arrow_drop_down</span>
                     </div>
                     <ul class="drop-list" id="drop_menu">
-                        <li class="drop-item"><a href="{% url 'shop' %}" class="drop-link">Sales Inventory USA</a></li>
-                        <li class="drop-item"><a href="{% url 'shop' %}" class="drop-link">Sales Inventory Canada</a></li>
+                        <li class="drop-item"><a href="{% url 'us_inventory' %}" class="drop-link">Sales Inventory USA</a></li>
+                        <li class="drop-item"><a href="{% url 'canada_inventory' %}" class="drop-link">Sales Inventory Canada</a></li>
                         <li class="drop-item"><a href="{% url 'sales_rebates' %}" class="drop-link">Sales Rebates</a></li>
                     </ul>
                </li>

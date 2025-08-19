@@ -196,10 +196,10 @@ textarea {
 		margin: 0;
 		width: 230px;
 	}.navbar-brand img{ 
-		width: 230px;
-		height: 80px;
-		object-fit: cover;
-		object-position: center;
+		width: 80%;
+		height: 75px;
+		object-fit: contain;
+		object-position: left;
 	}
 
 
@@ -213,6 +213,8 @@ textarea {
 		background-color: var(--theme-color-1);
 		transition: all 0.2s ease;
 		z-index: 999;
+	}.navbar-menu a#navbar-brand{
+		object-position: right;
 	}.nav-list{
 		width: 100%;
 		margin: 0;
@@ -397,7 +399,12 @@ textarea {
         font-size: 1.7rem;
         padding: 0 !important;
         text-align: center;
+		transition: color 0.3s ease;
     }
+	.wishlist-btn.active {
+		color: red;
+		font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+	}
 
 
     .product-name{
