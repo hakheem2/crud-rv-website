@@ -1,0 +1,341 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block head %}
+        
+    <title>{{ product.name }} for Sale | Franklin Used RVs</title>
+    <meta name="description" content="Buy the {{product.name}}, a quality pre-owned RV available at Franklin Used RVs. Reliable, affordable, and ready for adventure." />
+    <link rel="canonical" href="{% url 'product' slug=product.slug stock_no=product.stock_no %}" />
+    
+    <meta property="og:title" content="{{ product.name }} for Sale | Franklin Used RVs" />
+    <meta property="og:description" content="Check out the {{product.name}} now available at Franklin Used RVs. Affordable and reliable for your travels." />
+    <meta property="og:image" content="{{ product.image.url }}" />
+    <meta property="og:url" content="{% url 'product' slug=product.slug stock_no=product.stock_no %}" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{product.name}} for Sale | Franklin Used RVs" />
+    <meta name="twitter:description" content="Discover the {{product.name}}, a quality used RV for sale at Franklin Used RVs." />
+    <meta name="twitter:image" content="{{ product.image.url }}" />
+
+   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	<!-- ======= Custom CSS Styling -->
+   <link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock %}
+
+{% block body %} 
+   {% include 'navbar.html' %}
+   <main class="body">
+        <!-- Page Location Breadcrumb -->
+        <div class="page-location d-flex"> 
+            <a href="{% url 'home' %}">Home&nbsp;&nbsp;>&nbsp;&nbsp;</a><a href="{% url 'shop' %}">Buy Used RV&nbsp;&nbsp;>&nbsp;&nbsp;</a><br>
+            <h1 class="page-seo-name" style="font-size: 0.9rem;">{{ product.name }}</h1>
+        </div>
+
+        <section id="product">
+            <div class="container-fluid m-0">
+
+                <div class="row p-0 m-0" id="row1">
+                    <div class=" col-12 col-lg-7 p-0" id="">
+                        <div class="product-images">
+                            <div class="main-image">
+                                <button class="wishlist-btn {% if product.id|stringformat:'s' in request.session.wishlist %}active{% endif %}" data-product-id="{{ product.id }}">
+                                    <span class="material-symbols-outlined">favorite</span>
+                                </button>
+                                <img class="img img-fluid" src="{{ product.image.url }}" alt="{{ product.name }} from frankline used rvs">
+                            </div>
+                            <div class="gallery-images">
+                                <div class="swiper myProductCarousel">
+                                    <div class="swiper-wrapper">
+                                        {% for img in product.gallery_images.all %}
+                                        <div class="swiper-slide">
+                                            <img class="gallery-img" src="{{ img.image.url }}" alt="{{ product.name }} from frankline used rvs">
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <!-- pagination / navigation -->
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="center-info d-none d-lg-block">
+                            <div class="wrapper">
+                                <div class="addess">
+                                    <h4 class="title">Franklin Used RVs Sales Center</h4>
+                                    <address>
+                                        <span class="material-symbols-outlined">location_on</span>
+                                        <a href="https://maps.app.goo.gl/K7bEg8brgcDyduAD8" class="adress-link">605 S Harbor BlvdFullerton, CA 92832, USA</a>
+                                    </address>
+                                </div>
+                                <div class="working-hours">
+                                    <h4 class="item">Monday - Friday:&nbsp;<span class="value">8:00 AM - 5:30 PM</span></h4>
+                                    <h4 class="item">Monday - Friday:&nbsp;<span class="value">Closed</span></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5 p-0">
+                        <div class="info">
+                            <h2 class="name">{{ product.name }}</h2>
+                            <div class="price-year">
+                                <h3 class="year">{{ product.year }}</h3>
+                                <div class="price-box">
+                                    <h2 class="sales-price">USD&nbsp;<span id="sale_price">{{ product.sale_price|intcomma }}</span></h2>
+                                    <h3 class="price text-end">
+                                        <span class="discount-percent"></span>&nbsp;
+                                        <span class="original-price">$<span id="price">{{ product.price|intcomma }}</span></span>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="item-value">
+                                <h3 class="info-item">Stock Number:&nbsp;<span class="info-value">{{ product.stock_no }}</span></h3>
+                                <h3 class="info-item">Mileage:&nbsp;<span class="info-value">{{ product.mileage|intcomma }}</span></h3>
+                                <h3 class="info-item">Engine:&nbsp;<span class="info-value">{{ product.engine }}</span></h3>
+                                <h3 class="info-item">Location:&nbsp;<span class="info-value">{{ product.location }}</span></h3>
+                                <h3 class="info-item">VIN#:&nbsp;<span class="info-value">{{ product.vin_number }}</span></h3>
+                            </div>
+                            <div class="btn-list">
+                                <a href="https://wa.me/17734744219" class="call-us">Contact Us</a> <a href="" class="buy-now">Buy this Car</a>
+                            </div>
+                            <div class="request-form">
+                                <h4 class="title">For more information request, fill in and submit the form.</h4>
+                                <form class="form" action="">
+                                    <div class="mb-3 input-group">
+                                        <div class="field-wrapper mb-3">
+                                            <label for="fname" class="form-label">First Name<span class="material-symbols-outlined required-icon">star_rate</span></label>
+                                            <input type="text" class="input-field form-control" id="fname" placeholder="" required>
+                                        </div>
+                                        <div class="field-wrapper">
+                                            <label for="lname" class="form-label">Last Name<span class="material-symbols-outlined required-icon">star_rate</span></label>
+                                            <input type="text" class="input-field form-control" id="lname" placeholder="" required>
+                                        </div>  
+                                    </div>
+
+                                    <div class="mb-3 input-group">
+                                        <div class="field-wrapper mb-3">
+                                            <label for="email" class="form-label">Email Address<span class="material-symbols-outlined required-icon">star_rate</span></label>
+                                            <input type="email" class="input-field form-control" id="email" placeholder="" required>
+                                        </div>
+                                        <div class="field-wrapper">
+                                            <label for="phone" class="form-label">Phone Number<span class="material-symbols-outlined required-icon">star_rate</span></label>
+                                            <input type="number" class="input-field form-control" id="phone" placeholder="" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="message" class="form-label">Message<span class="material-symbols-outlined required-icon">star_rate</span></label>
+                                        <textarea class="form-control" id="message" rows="4" placeholder="Type your message" required></textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn form-control" id="submit-request-form">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="center-info d-lg-none">
+                            <div class="wrapper">
+                                <div class="addess">
+                                    <h4 class="title">Franklin Used RVs Sales Center</h4>
+                                    <address>
+                                        <span class="material-symbols-outlined">location_on</span>
+                                        <a href="https://maps.app.goo.gl/K7bEg8brgcDyduAD8" class="adress-link">605 S Harbor BlvdFullerton, CA 92832, USA</a>
+                                    </address>
+                                </div>
+                                <div class="working-hours">
+                                    <h4 class="item">Monday - Friday:&nbsp;<span class="value">8:00 AM - 5:30 PM</span></h4>
+                                    <h4 class="item">Monday - Friday:&nbsp;<span class="value">Closed</span></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-0 m-0" id="row2">
+                    <div class="short-des row m-0">
+                        <div class="col-12 col-lg-5">
+                            <div class="content-header">
+                                <h3 class="title">Amenities</h3>
+                                <p class="text">A traditional motorhome with all the self-contained features you expect, including a 4KW power generator. This economical family unit is a traditional favorite for those who want the walk-through convenience of a motorhome that is easy to drive!.</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-7">
+                            <div class="icon-list">
+                                <div class="icon-card">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-snowflake"></i>
+                                    </div>
+                                    <h5 class="title">Air Conditioning</h5>
+                                </div>
+                                <div class="icon-card">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-toilet"></i>
+                                    </div>
+                                    <h5 class="title">Fresh Water Toilet</h5>
+                                </div>
+                                <div class="icon-card">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">cooking</span>
+                                    </div>
+                                    <h5 class="title">Gas Cooktop</h5>
+                                </div>
+                                <div class="icon-card">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">kitchen</span>
+                                    </div>
+                                    <h5 class="title">Refrigerator</h5>
+                                </div>
+                                <div class="icon-card">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">microwave</span>
+                                    </div>
+                                    <h5 class="title">Microwave</h5>
+                                </div>
+                                <div class="icon-card">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-shower"></i>
+                                    </div>
+                                    <h5 class="title">Hot Water Shower</h5>
+                                </div>
+                                <div class="icon-card">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">microwave_gen</span>
+                                    </div>
+                                    <h5 class="title">Generator</h5>
+                                </div>
+                                <div class="icon-card">
+                                    <div class="icon">
+                                        <span class="material-symbols-outlined">auto_towing</span>
+                                    </div>
+                                    <h5 class="title">Tow Hitch</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-0 p-0" id="row3">
+                        <div class="images-wrapper col-12 col-lg-12 m-0">
+                            <div class="sec-header">
+                                <h2 class="title">Floor Plan</h2>
+                                <div class="switch-plan">
+                                    <button class="btn active" id="dayMode"><span class="d-none d-lg-block">Day</span><span class="material-symbols-outlined">light_mode</span></button>
+                                    <button class="btn" id="nightMode"><span class="d-none d-lg-block">Night</span><span class="material-symbols-outlined">dark_mode</span></button>
+                                </div>
+                            </div>
+                            <div class="rv-image">
+                                <img src="{% static 'images/rv-inside-day.png' %}" id="dayPlan" alt="" class="img img-fluid">
+                                <img src="{% static 'images/rv-inside-night.png' %}" id="nightPlan" alt="" class="img img-fluid">
+                            </div>
+                            <p class="text">
+                                The floor plan image is intended as a guide. Cruise America purchases new vehicles from several manufacturers yearly, and we cannot guarantee the exact specifications and layouts.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="row m-0 p-0" id="row4">
+                        <h3 class="sec-title">Features and Specs</h3>
+                        <div class="col-12 col-md-6 col-lg-3 p-0 m-0">
+                            <div class="list-wrapper">
+                                <h4 class="title">Specifications</h4>
+                                <ul class="list">
+                                    <li class="list-item">Sleeping Capacity: 6 people</li>
+                                    <li class="list-item">Generator: 4KW Onan Microlite</li>
+                                    <li class="list-item">Fuel Tank Capacity: 55 gal.</li>
+                                    <li class="list-item">Fresh Water Capacity: 40 gal.</li>
+                                    <li class="list-item">LPG Capacity: 12.2 gal.</li>
+                                    <li class="list-item">Grey Tank Capacity: 22 gal.</li>
+                                    <li class="list-item">Black Tank Capacity: 25 gal.</li>
+                                    <li class="list-item">Hot Water Capacity: 6 gal.</li>
+                                    <li class="list-item">Gross Vehicle Weight Rating (GVWR): 12,500 lbs.</li>
+                                    <li class="list-item">Exterior Length: 25 ft.</li>
+                                    <li class="list-item">Exterior Height: 10.7 ft.</li>
+                                    <li class="list-item">Exterior Width: 8.3 ft.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-3 p-0 m-0">
+                            <div class="list-wrapper">
+                                <h4 class="title">Coach Features</h4>
+                                <ul class="list">
+                                    <li class="list-item">Majestic Graphics Package</li>
+                                    <li class="list-item">Microwave</li>
+                                    <li class="list-item">Gas Range</li>
+                                    <li class="list-item">LP Gas Hot Water Heater</li>
+                                    <li class="list-item">Furnace</li>
+                                    <li class="list-item">Commercial Grade Upholstery &amp; Fabrics</li>
+                                    <li class="list-item">Stainless Steel Kitchen &amp; Bath Sinks</li>
+                                    <li class="list-item">Refrigerator/Freezer</li>
+                                    <li class="list-item">Central Vehicle Monitor Panel</li>
+                                    <li class="list-item">Integrated Entry Door Steps</li>
+                                    <li class="list-item">LED Interior Lighting</li>
+                                    <li class="list-item">Exterior “Basement” Storage</li>
+                                    <li class="list-item">Rooftop Air Conditioner</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-3 p-0 m-0">
+                            <div class="list-wrapper">
+                                <h4 class="title">Chassis Features</h4>
+                                <ul class="list">
+                                    <li class="list-item">4-Wheel ABS Brakes</li>
+                                    <li class="list-item">Cruise Control</li>
+                                    <li class="list-item">Air Conditioning</li>
+                                    <li class="list-item">Power Steering</li>
+                                    <li class="list-item">Tilt Steering Column</li>
+                                    <li class="list-item">Full Size Spare</li>
+                                    <li class="list-item">Power Windows</li>
+                                    <li class="list-item">Power Door Locks</li>
+                                    <li class="list-item">Power Exterior Mirrors</li>
+                                    <li class="list-item">Emergency Start Switch</li>
+                                    <li class="list-item">Trailer hitch</li>
+                                    <li class="list-item">Velvac Electric Sideview Mirrors</li>
+                                    <li class="list-item">Tow-Haul Mode</li>
+                                    <li class="list-item">12 Volt Auxiliary Dash Plugs</li>
+                                    <li class="list-item">Auxiliary Input</li>
+                                    <li class="list-item">AM/FM Stereo</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-3 p-0 m-0">
+                            <div class="list-wrapper">
+                                <h4 class="title">Coach Construction</h4>
+                                <ul class="list">
+                                    <li class="list-item">Laminated Rubber Roof</li>
+                                    <li class="list-item">High Density Insulated Wall</li>
+                                    <li class="list-item">Tongue-n-Groove Floor</li>
+                                    <li class="list-item">Gel-Glass Exterior Sidewalls</li>
+                                </ul>
+                            </div>
+                            <div class="list-wrapper">
+                                <h4 class="title">Safety Features</h4>
+                                <ul class="list">
+                                    <li class="list-item">Driver &amp; Passenger Air Bags</li>
+                                    <li class="list-item">Fire Extinguisher</li>
+                                    <li class="list-item">Carbon Monoxide Detector</li>
+                                    <li class="list-item">Smoke Detector</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <p class="text">
+                                *Vehicle photography for illustration purposes only.
+                                <br><br>
+                                Government fees, taxes, title fees, registration fees, temporary tag fees, local emission fees, and dealer document fees are not included in the price. Prices and promotions are subject to change without notice. Please contact your local sales center for availability.
+                                <br><br>
+                                We have made every effort to ensure accuracy in the information provided. Specifications, equipment, technical data, photographs, and illustrations are based on information available when posting and are subject to change without notice. Please contact your local sales location to receive or verify current product information.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+   </main>
+
+{% endblock %}
+
+{% block footer %}
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<script src="{% static 'js/product.js' %}"></script>
+    <script src="{% static 'js/wishlist.js' %}"></script>
+{% endblock %}

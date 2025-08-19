@@ -1,0 +1,68 @@
+   /* ---------- Pills (radio-looking buttons) ---------- */
+   .pill{
+   display: inline-flex;
+   align-items: center;
+   width: max-content;
+   max-width: 100%;
+   border: 1px solid var(--pill-border);
+   background: var(--pill-bg);
+   border-radius: var(--radius-pill);
+   padding: 8px 14px;
+   line-height: 1;
+   cursor: pointer;
+   user-select: none;
+   }
+
+   .pill input{
+   /* hide the native radio but keep it accessible */
+   position: absolute;
+   opacity: 0;
+   width: 0;
+   height: 0;
+   }
+
+   .pill span{
+   font-size: 0.8rem;
+   font-family: var(--inter);
+   font-weight: 600;
+   letter-spacing: 0.3px;
+   text-transform: uppercase !important;
+   color: var(--text);
+   white-space: nowrap;
+   }
+
+   /* Active state when radio checked */
+   .pill  input:checked + span{
+   color: var(--pill-active-text);
+   }
+   
+
+   .pill input:checked ~ span,
+   .pill:has(input:checked){
+   background: var(--pill-active-bg);
+   color: var(--pill-active-text);
+   border-color: var(--pill-active-bg);
+   border-radius: var(--radius-pill);
+   }
+
+   /* Provide the filled background on the label itself */
+   .pill:has(input:checked){
+   background: var(--pill-active-bg);
+   border-color: var(--pill-active-bg);
+   }
+
+   /* Hover/Focus */
+   .pill:hover{ border-color: var(--accent); }
+   .pill input:focus-visible + span{ outline: 1px solid var(--accent); }
+
+   /* ---------- Price label ---------- */
+   .price-label{
+   margin: 6px 0 8px;
+   color: var(--muted);
+   font-size: 15px;
+   }
+   .price-label #priceValue{
+   font-weight: 600;
+   color: var(--text);
+   font-size: 1rem;
+   }

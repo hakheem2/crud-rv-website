@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block head %} 
+	<title>Shop Used RVs | Franklin Used RVs</title>
+	<meta name="description" content="Browse our full inventory of used RVs, campers, and trailers at Franklin Used RVs. Quality vehicles at the best prices." />
+	<link rel="canonical" href="https://franklinusedrvs.com/buy-used-rv/"/>
+	
+	<meta property="og:title" content="Shop Used RVs | Franklin Used RVs" />
+	<meta property="og:description" content="Explore our collection of pre-owned RVs, campers, and travel trailers ready for your next adventure." />
+	<meta property="og:image" content="{% static 'images/brand-logo.png' %}" />
+	<meta property="og:url" content="https://franklinusedrvs.com/buy-used-rv/" />
+	
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Shop Used RVs | Franklin Used RVs" />
+	<meta name="twitter:description" content="Find affordable pre-owned RVs and campers in our Franklin Used RVs shop." />
+	<meta name="twitter:image" content="{% static 'images/brand-logo.png' %}" />
+
+	<link rel="stylesheet" href="{% static 'css/shop.css' %}">
+{% endblock %}
+
+{% block body %}
+	{% include 'navbar.html' %}
+	<main class="body">
+		<!-- Page Location Breadcrumb -->
+		<div class="page-location d-flex"> 
+			<a href="{% url 'home' %}">Home&nbsp;&nbsp;>&nbsp;&nbsp;</a>
+            <a href="{% url 'shop' %}">Buy Used Rv&nbsp;&nbsp;>&nbsp;&nbsp;</a>
+			<h1 class="page-seo-name" style="font-size: 0.9rem;">US</h1>
+		</div>
+		<section id="section-1">
+			<div class="filter-sidebar" id="filter">
+				<div class="filter-head">
+					<h2 class="filter-title">FILTERS</h2>
+					<span class="material-symbols-outlined menu-icon d-lg-none" id="closeFilter">menu_open</span>
+				</div>
+
+				<!-- MODEL -->
+				<fieldset class="filter-section" data-filter="model">
+					<legend class="filter-subtitle">MODEL</legend>
+					<div class="filter-options stack">
+					<label class="pill selected">
+						<input type="radio" name="model" value="all_models" class="filter-input" checked>
+						<span>ALL MODELS</span>
+					</label>
+					{% for name in product_names %}
+						<label class="pill">
+						<input type="radio" name="model" value="{{name}}" class="filter-input">
+						<span>{{ name }}</span>
+						</label>
+					{% endfor %}
+					</div>
+				</fieldset>
+
+				<!-- YEAR -->
+				<fieldset class="filter-section" data-filter="year">
+					<legend class="filter-subtitle">YEAR</legend>
+					<div class="filter-options d-flex flex-wrap">
+					<label class="pill selected">
+						<input type="radio" name="year" value="all_years" class="filter-input" checked>
+						<span>ALL YEARS</span>
+					</label>
+					{% for year in product_years %}
+						<label class="pill">
+						<input type="radio" name="year" value="{{year}}" class="filter-input">
+						<span>{{ year }}</span>
+						</label>
+					{% endfor %}
+					</div>
+				</fieldset>
+
+				<!-- PRICE -->
+				<fieldset class="filter-section" data-filter="price">
+					<legend class="filter-subtitle">PRICE</legend>
+					<p class="price-label">
+					Up to <span id="priceValue">{{max_price}}</span>
+					</p>
+					<input
+					id="priceRange"
+					class="price-range filter-input"
+					type="range"
+					min="{{min_price}}"
+					max="{{max_price}}"
+					value="{{max_price}}"
+					step="50"
+					aria-label="Maximum price"
+					/>
+				</fieldset>
+
+				<!-- LOCATION -->
+				<fieldset class="filter-section" data-filter="location">
+					<legend class="filter-subtitle">LOCATION</legend>
+					<div class="filter-options d-flex flex-wrap">
+					<label class="pill selected">
+						<input type="radio" name="location" value="all_locations" class="filter-input" checked>
+						<span>ALL LOCATIONS</span>
+					</label>
+					{% for location in product_locations %}
+						<label class="pill">
+						<input type="radio" name="location" value="{{location}}" class="filter-input">
+						<span>{{location}}</span>
+						</label>
+					{% endfor %}
+					</div>
+				</fieldset>
+
+				<!-- RESET BUTTON -->
+				<div class="filter-actions">
+					<button type="button" id="resetFilters" class="btn-reset">
+						Reset Filters <span class="material-symbols-outlined ">delete_forever</span>
+					</button>
+				</div>
+			</div>
+
+			<div class="product-list container-fluid m-0">
+				<div class="sec-header">
+					<h2 class="title">Browse all RVs</h2>
+					<div class="filter-btn d-lg-none">
+						<h2 class="filter-title">Filters</h2>
+						<span class="material-symbols-outlined menu-icon" id="openFilter">menu_open</span>
+					</div>
+					<div class="sort-dropdown">
+						<div class="drop-input">
+							<div class="dropdown-selected">
+								<span id="sort-value">Sort:</span>
+								<span class="material-symbols-outlined text-danger fs-5 fw-bold d-none" id="reset-sort">close</span>
+							</div>
+							<span class="material-symbols-outlined drop-icon">keyboard_arrow_down</span>
+						</div>
+						<div class="dropdown-list">
+							<div class="dropdown-item" data-value="recent">Recenly Added</div>
+							<div class="dropdown-item" data-value="model">Recent Model</div>
+							<div class="dropdown-item" data-value="lowest_price">Low to High Price</div>
+							<div class="dropdown-item" data-value="highest_price">High to Low Price</div>
+							<div class="dropdown-item" data-value="mileage">Lowest Mileage</div>
+						</div>
+						<input type="hidden" name="current-sort" id="current-sort" value="all">
+					</div>
+				</div>
+
+				<div id="product-loading" class="product-spinner">
+					<div class="spinner-grow" role="status">
+						<span class="visually-hidden">Loading...</span>
+					</div>
+				</div>
+
+				<div id="product-list" style="display:none;">
+					<div id="product-grid" class="row p-0 m-0 d-flex">
+						{% include 'partials/product_list.html' with products=products %}
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}
+
+{% block footer %}
+	<script src="{% static 'js/shop.js' %}"></script>
+	<script src="{% static 'js/wishlist.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block head %}
+	
+   <title>RV Tips & Guides Blog | Franklin Used RVs</title>
+   <meta name="description" content="Read the Franklin Used RVs blog for RV tips, buying guides, maintenance advice, and travel inspiration for RV enthusiasts." />
+   <link rel="canonical" href="https://franklinusedrvs.com/blog/" />
+   
+   <meta property="og:title" content="RV Tips & Guides Blog | Franklin Used RVs" />
+   <meta property="og:description" content="Explore helpful RV buying guides, travel tips, and maintenance advice on the Franklin Used RVs blog." />
+   <meta property="og:image" content="https://franklinusedrvs.com/static/images/favi-icon.jpg" />
+   <meta property="og:url" content="https://franklinusedrvs.com/blog/" />
+   
+   <meta name="twitter:card" content="summary_large_image" />
+   <meta name="twitter:title" content="RV Tips & Guides Blog | Franklin Used RVs" />
+   <meta name="twitter:description" content="Helpful RV articles and travel guides from Franklin Used RVs." />
+   <meta name="twitter:image" content="https://franklinusedrvs.com/static/images/favi-icon.jpg" />
+
+
+	<!-- ======= Custom CSS Styling -->
+   <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block body %} 
+   {% include 'navbar.html' %}
+
+
+{% endblock %}
+
+{% block footer %}
+	
+{% endblock %}
