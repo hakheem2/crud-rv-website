@@ -1,3 +1,2 @@
 [deploy]
-build = { cmd = "python manage.py migrate && python manage.py collectstatic --noinput && python manage.py create_superuser.py" }
-start = { cmd = "gunicorn franklin_used_rv.wsgi:application --bind 0.0.0.0:$PORT" }
+start = { cmd = "python manage.py migrate && python manage.py collectstatic --noinput && python create_superuser.py && gunicorn franklin_used_rv.wsgi:application --bind 0.0.0.0:$PORT" }
