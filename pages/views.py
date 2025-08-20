@@ -26,3 +26,30 @@ def about(request):
 
 def terms(request):
     return render(request, 'contract-terms.html')
+
+
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+#
+# def order_email(user_email, context):
+#     """
+#     Send an order confirmation email to the user.
+#     """
+#     subject = "Your Order Confirmation - Franklin Used RVs"
+#
+#     # Render the HTML template
+#     html_content = render_to_string('emails/order-template.html', context)
+#
+#     # Create the email
+#     msg = EmailMultiAlternatives(
+#         subject=subject,
+#         body='This is a HTML email. Please view it in an HTML compatible email client.',
+#         from_email=None,  # Uses DEFAULT_FROM_EMAIL from settings.py
+#         to=[user_email],
+#     )
+#
+#     # Attach the HTML content
+#     msg.attach_alternative(html_content, "text/html")
+#
+#     # Send the email
+#     msg.send()
