@@ -6,6 +6,12 @@
    font-family: var(--inter);
 }
 
+.no-scroll {
+  overflow: hidden; /* prevent body scroll */
+  position: fixed;  /* lock scroll position */
+  width: 100%;      /* avoid layout shift */
+}
+
 
 .page-location {
    padding: 20px;
@@ -28,16 +34,22 @@
 
 .filter-sidebar{
    position: fixed;
-   top: 170px;
+   top: 100px;
    left: -100%;
-   width: 95%;
+   width: 98%;
    height: 100vh;
+   overflow: hidden;
    padding: 15px;
    background-color: var(--white-color);
    border-radius: 20px;
    margin-left: 10px;
    transition: all 0.2s ease;
    z-index: 799;
+
+   .filter-sidebar .filter-content {
+      height: 100%;
+      overflow-y: auto; /* scroll inside sidebar */
+   }
 
    .filter-head{
       display: flex;

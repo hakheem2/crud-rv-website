@@ -122,13 +122,35 @@ $(document).ready(function () {
     // Mobile Filter Slide In/Out
     // ------------------------
     const filter = $("#filter");
+    let scrollPosition = 0;
+    const body = document.body;
+    // $("#openFilter").click(function (e) {
+    //     e.preventDefault();
+    //     scrollPosition = window.pageYOffset;
+    //     body.style.top = `-${scrollPosition}px`;
+    //     body.classList.add("no-scroll");
+    //     filter.css("left", "0");
+    // });
+
+    // $("#closeFilter").click(function (e) {
+    //     e.preventDefault();
+    //     filter.css("left", "-101%");
+        
+    // });
+
     $("#openFilter").click(function (e) {
         e.preventDefault();
+        filter.css("left", "0");
+        body.style.top = `-${scrollPosition}px`;
+        body.classList.add("no-scroll");
         filter.css("left", "0");
     });
     $("#closeFilter").click(function (e) {
         e.preventDefault();
         filter.css("left", "-101%");
+        body.classList.remove("no-scroll");
+        body.style.top = "";
+        window.scrollTo(0, scrollPosition);
     });
 
     // ------------------------
