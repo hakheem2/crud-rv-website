@@ -16,3 +16,5 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(f"Superuser '{username}' created."))
         else:
             self.stdout.write(self.style.WARNING(f"Superuser '{username}' already exists."))
+
+#&& python manage.py init_superuser
