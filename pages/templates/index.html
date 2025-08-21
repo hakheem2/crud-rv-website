@@ -9,8 +9,8 @@
 	<meta property="og:title" content="Franklin Used RVs | Quality Pre-Owned RVs and Campers for Sale" />
 	<meta property="og:description" content="Find affordable used RVs and campers at Franklin Used RVs. Start your next road trip with confidence." />
 	<meta property="og:url" content="https://franklinusedrvs.com/" />
-	<meta property="og:image" content="https://franklinusedrvs.com/static/images/favi-icon.png" />
-  	<meta name="twitter:image" content="https://franklinusedrvs.com/static/images/favi-icon.png" />
+	<meta property="og:image" content="https://franklinusedrvs.com/static/images/brand-logo.png" />
+  	<meta name="twitter:image" content="https://franklinusedrvs.com/static/images/brand-logo.png" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="Franklin Used RVs | Quality Pre-Owned RVs and Campers for Sale" />
 	<meta name="twitter:description" content="Discover affordable pre-owned RVs, motorhomes, and trailers at Franklin Used RVs." />
@@ -134,7 +134,7 @@
 								</div>
 								<div class="product-price">
 									<div class="starter-price">
-										<span class="sub-text">Starts from</span><h4 class="starter" id="starter">USD 3,000/month</h4>
+										<span class="sub-text">Starts from</span><h4 class="starter" id="starter">USD {{ product.down_pay|intcomma }}/month</h4>
 									</div>
 									<div class="full-price">
 										<span class="sub-text">Full Price</span><h4 class="price" id="discounted">USD {{ product.sale_price|intcomma }}</h4>
@@ -270,7 +270,7 @@
 												</div>
 												<div class="product-price">
 													<div class="starter-price">
-														<span class="sub-text">Starts from</span><h4 class="starter" id="starter">USD 3,000/month</h4>
+														<span class="sub-text">Starts from</span><h4 class="starter" id="starter">USD {{ product.down_pay|intcomma }}/month</h4>
 													</div>
 													<div class="full-price">
 														<span class="sub-text">Full Price</span><h4 class="price" id="discounted">USD {{ product.sale_price|intcomma }}</h4>
