@@ -19,9 +19,13 @@
     {% block head %} {% endblock %}
     <!--  ========== css links ========== -->
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <input type="hidden" id="csrf-token" value="{% csrf_token %}">
+    
 </head>
 <body>
+    <form id="csrf-form" style="display:none;">
+        {% csrf_token %}
+    </form>
+
     
     {% block body %} {% endblock %}
 

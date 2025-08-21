@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block head %}
+	<!-- ========== Swipper Slide CSS Link ========= -->
+	<!-- ======= Custom CSS Styling -->
+   <link rel="stylesheet" href="{% static 'css/orders.css' %}">
+    <style>
+        
+
+    </style>
+{% endblock %}
+
+{% block body %}
+   {% include 'navbar.html' %}
+<main class="body">
+   <div class="container px-1 px-lg-auto" id="section">
+        <div class="row p-0 m-0 d-flex justify-content-between">
+            <div class="col-12 col-lg-7 m-0 form-container">
+                <div class="request-form">
+                    <h4 class="title pb-3">Shipping Info</h4>
+                    <form class="form" method="POST" action="{% url 'order:order_register' product.id %}">
+                        {% csrf_token %}
+                        <div class="mb-3 input-group">
+                            <!-- Name -->
+                            <div class="field-wrapper mb-3">
+                                <label for="id_name" class="form-label">Full Name<span class="star">*</span></label>
+                                <input type="text" 
+                                    class="input-field form-control" 
+                                    id="id_name"
+                                    name="{{ form.name.name }}"
+                                    value="{{ form.name.value|default_if_none:'' }}"
+                                    placeholder="Your name"
+                                    required>
+                                <div class="text-warning">{{ form.name.errors }}</div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="field-wrapper mb-3">
+                                <label for="id_email" class="form-label">Email Address<span class="star">*</span></label>
+                                <input type="email"
+                                    class="input-field form-control"
+                                    id="id_email"
+                                    name="{{ form.email.name }}"
+                                    value="{{ form.email.value|default_if_none:'' }}"
+                                    placeholder="Your email"
+                                    required>
+                                <div class="text-warning">{{ form.email.errors }}</div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="field-wrapper">
+                                <label for="id_phone_number" class="form-label">Phone Number<span class="star">*</span></label>
+                                <input type="number"
+                                    class="input-field form-control"
+                                    id="id_phone_number"
+                                    name="{{ form.phone_number.name }}"
+                                    value="{{ form.phone_number.value|default_if_none:'' }}"
+                                    placeholder="Your phone"
+                                    required>
+                                <div class="text-warning">{{ form.phone_number.errors }}</div>
+                            </div>
+
+                            <div class="field-wrapper">
+                                <label for="address" class="form-label">Address<span class="star">*</span></label>
+                                <input type="text"
+                                    class="input-field form-control"
+                                    id="id_address"
+                                    name="{{ form.address.name }}"
+                                    value="{{ form.address.value|default_if_none:'' }}"
+                                    placeholder="Your address"
+                                    required>
+                                <div class="text-warning">{{ form.address.errors }}</div>
+                            </div>
+                        </div>
+
+                        <!-- Notes -->
+                        <div class="mb-3">
+                            <label for="id_notes" class="form-label">Notes</label>
+                            <textarea class="form-control"
+                                    id="id_notes"
+                                    name="{{ form.notes.name }}"
+                                    rows="4"
+                                    placeholder="Any special purchase directives">{{ form.notes.value|default_if_none:'' }}</textarea>
+                            <div class="text-warning">{{ form.notes.errors }}</div>
+                        </div>
+
+                        <!-- Payment Type -->
+                        <div class="card-body mb-3" id="select_payment">
+                            <p class="ps-2 text-muted position-relative d-inline-block">
+                                Select Payment Method <span class="star">*</span>
+                            </p>
+                            <div class="d-flex flex-wrap gap-2 ps-2">
+                                <!-- Chime -->
+                                <label class="btn btn-outline-primary d-flex align-items-center">
+                                    <input type="radio"
+                                        name="{{ form.payment_type.name }}"
+                                        value="chime"
+                                        class="payment-option d-none" checked>
+                                    <img class="me-2" width="30" src="https://img.icons8.com/color/480/000000/chime--v2.png" alt="Chime">
+                                    Chime
+                                </label>
+
+                                <!-- Zelle -->
+                                <label class="btn btn-outline-primary d-flex align-items-center">
+                                    <input type="radio"
+                                        name="{{ form.payment_type.name }}"
+                                        value="zelle"
+                                        class="payment-option d-none">
+                                    <img class="me-2" width="30" src="https://img.icons8.com/color/480/000000/zelle.png" alt="Zelle">
+                                    Zelle
+                                </label>
+                            </div>
+                            <div class="text-warning">{{ form.payment_type.errors }}</div>
+                        </div>
+
+                        <button type="submit" class="btn form-control" id="submit-request-form">Submit</button>
+                    </form>
+
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 p-0 m-0">
+                <div class="row m-0 order-details">
+                    <div>
+                        <h4 class="title pb-3 ps-2">RV Details</h4>
+                        <div class="product-wrapper col-12 col-md-12 px-1 mx-auto">
+                            <div class="product-card" style="margin: 0 !important;">
+                                <div class="product-image">
+                                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                </div>
+                                <div class="product-details">
+                                    <h4 class="item">model</h4>
+                                    <h3 class="value">{{ product.name }}</h3>
+                                </div>
+                                <div class="product-details">
+                                    <h4 class="item">year</h4>
+                                    <h3 class="value">{{ product.year }}</h3>
+                                </div>
+                                <div class="product-details">
+                                    <h4 class="item">mileage</h4>
+                                    <h3 class="value">p{{ product.mileage|intcomma }}</h3>
+                                </div>
+                                <div class="call-action">
+                                    <a href="{% url 'product' slug=product.slug stock_no=product.stock_no %}" class="btn">Go to RV Listing</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+</main> 
+
+{% endblock %}
+
+{% block footer %}
+    <script>
+        $(document).ready(function () {
+           // When a label inside #select_payment is clicked
+            $('#select_payment label').click(function(e) {
+                //e.preventDefault(); // prevent default label behavior
+
+                // 1. Uncheck all radios in this group
+                $('#select_payment input.payment-option').prop('checked', false);
+
+                // 2. Check the radio inside the clicked label
+                $(this).find('input.payment-option').prop('checked', true);
+
+                // 3. Update label styles
+                $('#select_payment label').removeClass('active btn-primary').addClass('btn-outline-primary');
+                $(this).removeClass('btn-outline-primary').addClass('active btn-primary');
+            });
+
+
+            
+
+        });
+
+    </script>
+{% endblock %}

@@ -12,6 +12,7 @@ class Product(models.Model):
     year = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=12, decimal_places=2)
     sale_price = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True)
+    down_pay = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True, default=500.00)
     stock_no = models.CharField(max_length=50, unique=True)
     mileage = models.IntegerField()
     engine = models.CharField(max_length=100)
@@ -49,3 +50,5 @@ class Gallery(models.Model):
 
     def __str__(self):
         return f"{self.product.name} - Gallery Image"
+
+

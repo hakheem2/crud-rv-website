@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Order Status Update</title>
+        <style>
+            body span{font-weight: 500;}
+        </style>
+    </head>
+    <body style="font-family:Arial,sans-serif; color:#333;">
+        <h3 style="color:#235583;">Order Status Update</h3>
+        <p>Hello {{ order.name }},</p>
+        <p style="color: #fff;">Your order <span>OR-{{ order.order_id }}</span> has been <span>{{ order.status|title }}</span></p>
+        <p>Thank you for buying from Franklin Used RVs!</p>
+        <a href="https://franklinusedrvs.com" style="background:#235583;color:#fff;padding:10px 20px;text-decoration:none;border-radius:5px; margin-top: 15px;">Visit Our Website</a>
+    </body>
+</html>

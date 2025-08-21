@@ -28,17 +28,17 @@ def terms(request):
     return render(request, 'contract-terms.html')
 
 
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
+# from django.core.mail import EmailMultiAlternatives
+# from django.template.loader import render_to_string
 #
 # def order_email(user_email, context):
 #     """
-#     Send an order confirmation email to the user.
+#     Send an orders confirmation email to the user.
 #     """
 #     subject = "Your Order Confirmation - Franklin Used RVs"
 #
 #     # Render the HTML template
-#     html_content = render_to_string('emails/order-template.html', context)
+#     html_content = render_to_string('emails/orders-template.html', context)
 #
 #     # Create the email
 #     msg = EmailMultiAlternatives(

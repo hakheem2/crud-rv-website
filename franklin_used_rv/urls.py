@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('pages.urls')),   # home / main pages
     path('buy-used-rv/', include('shop.urls')),
     path('blog/', include('blog.urls')),
+    path("orders/", include("orders.urls", namespace="order")),
 ]
 
 from django.conf import settings
