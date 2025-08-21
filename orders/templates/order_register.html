@@ -138,7 +138,7 @@
                                 </div>
                                 <div class="product-details">
                                     <h4 class="item">mileage</h4>
-                                    <h3 class="value">p{{ product.mileage|intcomma }}</h3>
+                                    <h3 class="value">{{ product.mileage|intcomma }}</h3>
                                 </div>
                                 <div class="call-action">
                                     <a href="{% url 'product' slug=product.slug stock_no=product.stock_no %}" class="btn">Go to RV Listing</a>
