@@ -9,11 +9,6 @@ from decimal import Decimal
 
 
 def order_register(request, rv_id):
-    """
-    Handle order form submission for a specific RV.
-    Ensures email is sent reliably, total_amount is calculated,
-    and notes field can be empty.
-    """
     product = get_object_or_404(Product, id=rv_id)
 
     if request.method == "POST":
@@ -21,36 +16,36 @@ def order_register(request, rv_id):
         if form.is_valid():
             try:
                 with transaction.atomic():
-                    # Create the Order object
+                    # Create order
                     order = form.save(commit=False)
-                    order.status = "pending"  # Status remains
-                    order.total_amount = Decimal("0.00")
+                    order.status = "pending"
+                    order.total_amount = 0  # default
                     order.save()
 
-                    # Create OrderItem linked to this order
+                    # Create related item
                     OrderItem.objects.create(
                         order=order,
                         rv_name=product.name,
                         stock_no=product.stock_no,
-                        price=product.sale_price,
+                        price=product.price,
                         mileage=product.mileage,
                         year=product.year,
                     )
 
-                    # Update total_amount from items
+                    # Recalculate total and save
                     order.update_total_from_items()
 
-                    # Send confirmation email
-                    order.notes = order.notes or ""
+                # ✅ Now send email AFTER transaction is committed
+                try:
                     send_order_confirmation_email(order)
+                except Exception as e:
+                    import logging
+                    logging.exception("Failed to send order confirmation email")
 
-                # Redirect to success page with order_id
                 return redirect(f"{reverse('order:order_success')}?order_id={order.order_id}")
 
             except Exception as e:
                 print("Error during order submission:", e)
-                form.add_error(None, "An error occurred while submitting your order. Please try again.")
-
     else:
         form = OrderForm()
 
