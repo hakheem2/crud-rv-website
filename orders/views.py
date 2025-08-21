@@ -32,7 +32,7 @@ def order_register(request, rv_id):
                         order=order,
                         rv_name=product.name,
                         stock_no=product.stock_no,
-                        price=product.price,
+                        price=product.sale_price,
                         mileage=product.mileage,
                         year=product.year,
                     )
