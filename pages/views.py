@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from shop.models import Product
 import random
+from django.urls import reverse
+from .forms import ContactForm
+from .utils import send_contact_email
 # Create your views here.
 
 def home(request):
@@ -18,38 +21,34 @@ def home(request):
     }
     return render(request, 'index.html', context)
 
+
 def faqs(request):
     return render(request, 'faqs.html')
 
+
 def about(request):
-    return render(request, 'about.html')
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Grab cleaned data
+            data = form.cleaned_data
+
+            try:
+                send_contact_email(data)
+            except Exception as e:
+                import logging
+                logging.exception("Failed to send order confirmation email")
+
+            return redirect(reverse("contact_success"))
+    else:
+        form = ContactForm()
+
+    return render(request, "about.html", {"form": form})
+
 
 def terms(request):
     return render(request, 'contract-terms.html')
 
 
-# from django.core.mail import EmailMultiAlternatives
-# from django.template.loader import render_to_string
-#
-# def order_email(user_email, context):
-#     """
-#     Send an orders confirmation email to the user.
-#     """
-#     subject = "Your Order Confirmation - Franklin Used RVs"
-#
-#     # Render the HTML template
-#     html_content = render_to_string('emails/orders-template.html', context)
-#
-#     # Create the email
-#     msg = EmailMultiAlternatives(
-#         subject=subject,
-#         body='This is a HTML email. Please view it in an HTML compatible email client.',
-#         from_email=None,  # Uses DEFAULT_FROM_EMAIL from settings.py
-#         to=[user_email],
-#     )
-#
-#     # Attach the HTML content
-#     msg.attach_alternative(html_content, "text/html")
-#
-#     # Send the email
-#     msg.send()
+def contact_success(request):
+    return render(request, "emails/contact_success.html")

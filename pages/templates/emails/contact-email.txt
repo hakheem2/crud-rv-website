@@ -1,0 +1,16 @@
+📩 New Contact Form Submission
+
+Details:
+---------
+
+Full Name: {{ name }}
+Email Address: {{ email }}
+Phone Number: {{ phone }}
+
+Message:
+{{ message }}
+
+---------
+
+This message was sent from your website contact form.
+Please reply directly to the sender if needed.

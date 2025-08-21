@@ -115,28 +115,49 @@
                         <h2 class="title">Have a question, We'd love to help you!</h2>
                         <p class="text">We're never too busy, but this is the best way for us to assist you as quickly as possible.</p>
                      </div>
-                     <form class="form" action="">
+                     <form class="form" method="post" action="{% url 'about' %}">
+                        {% csrf_token %}
                         <div class="mb-3 input-group">
                               <div class="field-wrapper mb-3">
                                  <label for="name" class="form-label">Full Name<span class="material-symbols-outlined required-icon">star_rate</span></label>
-                                 <input type="text" class="input-field form-control" id="name" placeholder="" required>
+                                 <input type="text" 
+                                 class="input-field form-control" 
+                                 name="{{ form.name.name }}" 
+                                 id="name" 
+                                 placeholder="Your name ..."
+                                 value="{{ form.name.value|default_if_none:'' }}"
+                                 required>
                               </div>
                         </div>
 
                         <div class="mb-3 input-group">
                               <div class="field-wrapper mb-3">
                                  <label for="email" class="form-label">Email Address<span class="material-symbols-outlined required-icon">star_rate</span></label>
-                                 <input type="email" class="input-field form-control" id="email" placeholder="" required>
+                                 <input type="email" 
+                                 name="{{ form.email.name }}" 
+                                 value="{{ form.email.value|default_if_none:'' }}"
+                                 class="input-field form-control" id="email" 
+                                 placeholder="Your email ..." 
+                                 required>
                               </div>
                               <div class="field-wrapper">
                                  <label for="phone" class="form-label">Phone Number<span class="material-symbols-outlined required-icon">star_rate</span></label>
-                                 <input type="number" class="input-field form-control" id="phone" placeholder="" required>
+                                 <input type="number" 
+                                 name="{{ form.phone.name }}"
+                                 value="{{ form.phone.value|default_if_none:'' }}"
+                                 class="input-field form-control" id="phone" 
+                                 placeholder="Your phone ..." 
+                                 required>
                               </div>
                         </div>
 
                         <div class="mb-3">
                               <label for="message" class="form-label">Message<span class="material-symbols-outlined required-icon">star_rate</span></label>
-                              <textarea class="form-control" id="message" rows="4" placeholder="Type your message" required></textarea>
+                              <textarea 
+                              name="{{ form.message.name }}" 
+                              class="form-control" id="message" rows="4" 
+                              placeholder="Type your message" 
+                              required>{{ form.message.value|default_if_none:'' }}</textarea>
                         </div>
 
                         <button type="submit" class="btn form-control" id="submit-request-form">Submit</button>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New Contact Form Submission</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #F4F7FA; /* theme-color-4 */
+      color: #333333;
+    }
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .header {
+      background-color: #235583; /* theme-color-1 */
+      padding: 20px;
+      text-align: center;
+      color: #ffffff;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .content {
+      padding: 20px;
+    }
+    .content h2 {
+      color: #345B06; /* theme-color-2 */
+      font-size: 18px;
+      margin-top: 0;
+    }
+    .field {
+      margin-bottom: 15px;
+    }
+    .field strong {
+      display: block;
+      color: #235583; /* theme-color-1 */
+      margin-bottom: 5px;
+    }
+    .footer {
+      background-color: #B1D8F7; /* theme-color-3 */
+      text-align: center;
+      padding: 15px;
+      font-size: 12px;
+      color: #333333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>📩 New Contact Form Submission</h1>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <h2>Details</h2>
+
+      <div class="field">
+        <strong>Full Name:</strong>
+        {{ name }}
+      </div>
+      <div class="field">
+        <strong>Email Address:</strong>
+        {{ email }}
+      </div>
+      <div class="field">
+        <strong>Phone Number:</strong>
+        {{ phone }}
+      </div>
+      <div class="field">
+        <strong>Message:</strong>
+        <p>{{ message }}</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      This message was sent from your website contact form.  
+      Please reply directly to the sender if needed.
+    </div>
+  </div>
+</body>
+</html>
