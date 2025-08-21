@@ -19,7 +19,18 @@
     {% block head %} {% endblock %}
     <!--  ========== css links ========== -->
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    
+    <style>
+        .wa-floating-icon{
+            position: fixed; bottom: 20px; right: 15px; z-index: 799;
+        }
+        .wa-floating-icon .icon{
+            width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%;
+            background-color: #25D366;
+        }
+        .wa-floating-icon .icon .fa-brands{
+            font-size: 2rem; color: #fefefe;
+        }
+    </style>
 </head>
 <body>
     <form id="csrf-form" style="display:none;">
@@ -29,6 +40,9 @@
     
     {% block body %} {% endblock %}
 
+    <div class="wa-floating-icon">
+        <a href="https://wa.me/17734744219" class="icon"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
     <footer id="footer">
         <div class="container-fluid px-0 m-0">
             <div class="row mx-0 px-0">
