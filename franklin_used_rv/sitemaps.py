@@ -3,6 +3,7 @@ from django.urls import reverse
 from shop.models import Product
 
 class StaticViewSitemap(Sitemap):
+    protocol = "https"
     priority = 1.0
     changefreq = "weekly"
 
