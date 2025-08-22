@@ -15,6 +15,7 @@ class StaticViewSitemap(Sitemap):
 
 
 class RVSitemap(Sitemap):
+    protocol = "https"
     changefreq = "weekly"
     priority = 0.8
 
