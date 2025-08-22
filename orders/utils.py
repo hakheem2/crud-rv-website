@@ -9,7 +9,7 @@ def send_order_confirmation_email(order):
     """
     subject = f"Order Confirmation | OR-{order.order_id}"
     from_email = settings.DEFAULT_FROM_EMAIL
-    to_email = [order.email]
+    to_email = [order.email, from_email]
 
     html_content = render_to_string(
         "order_template.html",
