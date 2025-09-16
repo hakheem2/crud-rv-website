@@ -18,7 +18,7 @@ def shop(request):
     # distinct locations
     product_locations = Product.objects.values_list("location", flat=True).distinct()
     #radom initial products
-    initial_products = random.sample(products, min(len(products)))
+    initial_products = random.sample(products)
     #maxed price
     max_price = Product.objects.aggregate(Max("sale_price"))["sale_price__max"]
     #min price
