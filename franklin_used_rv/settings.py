@@ -28,8 +28,21 @@ SECRET_KEY = os.getenv("SECRET_KEY", "iq&t49a6)*6gy=_6vt=!_4$onb=*#&aw9oe#dp9p^5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "https://franklinusedrvs.com").split(",")
-CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
+ALLOWED_HOSTS = [
+    "franklinusedrvs.com",     
+    "www.franklinusedrvs.com", 
+    ".franklinusedrvs.com",    
+    "localhost",               
+    "127.0.0.1",               
+]
+
+CSRCSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "https://franklinusedrvs.com",
+    "https://*.franklinusedrvs.com", 
+]
+
 
 # Application definition
 
